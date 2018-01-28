@@ -64,6 +64,15 @@ app.post('/blogs', (req, res) => {
 });
 
 // SHOW
+app.get('/blogs/:id', (req, res) => {
+	Blog.findById(req.params.id, (err, foundBlog) => {
+		if (err) {
+			res.redirect('/blogs');
+		} else {
+			res.render('show', { blog: foundBlog });
+		}
+	});
+});
 
 // EDIT
 
