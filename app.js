@@ -101,6 +101,17 @@ app.put('/blogs/:id', (req, res) => {
 });
 
 // DELETE
+app.delete('/blogs/:id', (req, res) => {
+	// destroy blog
+	Blog.findByIdAndRemove(req.params.id, (err, deletedBlog) => {
+		if (err) {
+			res.redirect('/blogs');
+		} else {
+			res.redirect('/blogs');
+		}
+	});
+	// redirect somewher
+});
 
 
 // *** Serve App *** //
