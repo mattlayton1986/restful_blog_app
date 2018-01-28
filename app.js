@@ -42,12 +42,26 @@ app.get('/blogs', (req, res) => {
 			res.render('index', { blogs: blogs });
 		}
 	});
-	
 })
 
 // NEW
+app.get('/blogs/new', (req, res) => {
+	res.render('new');
+});
 
 // CREATE
+app.post('/blogs', (req, res) => {
+	// create blog
+	Blog.create(req.body.blog, (err, newPost) => {
+		if (err) {
+			res.render('new');
+		} else {
+			res.redirect('/blogs');
+		}
+	});
+	// then, redirect to index
+
+});
 
 // SHOW
 
